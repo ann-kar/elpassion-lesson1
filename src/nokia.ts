@@ -1,6 +1,5 @@
 export class NokiaTexter {
-  text: string;
-  constructor(text: string) {
+  constructor(private text: string) {
     this.text = text;
   }
   squeeze() {
