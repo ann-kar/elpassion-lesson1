@@ -1,1 +1,9 @@
-export const number = 5;
+export class TurboNumber {
+  num: number;
+  constructor(num: number) {
+    this.num = num;
+  }
+  result() {
+    return this.num;
+  }
+}
