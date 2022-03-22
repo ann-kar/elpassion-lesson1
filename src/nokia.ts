@@ -5,6 +5,8 @@ export class NokiaTexter {
   }
   squeeze() {
     if (!this.text.includes(" ")) return this.text;
+    if (this.text.split(" ").join("").length > 160)
+      throw new Error("MessageTooLong");
     return this.text
       .split(" ")
       .map((word, i) => (i % 2 === 0 ? word.toUpperCase() : word))
