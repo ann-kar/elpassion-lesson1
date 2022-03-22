@@ -7,6 +7,9 @@ export class TurboNumber {
         this.num = this.num - x;
     }
     divide(x: number) {
+        if (x === 0) {
+            throw new Error("You cannot divide by zero")
+        }
         this.num = this.num / x;
     }
     result() {
