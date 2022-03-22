@@ -1,29 +1,32 @@
 import { TurboNumber } from "./index";
 
 describe("class TurboNumber", function () {
+
+  let tn: TurboNumber;
+  beforeEach(() => {
+    tn = new TurboNumber(10)
+  })
+
   it("returns the number provided", () => {
-    expect(new TurboNumber(10).result()).toBe(10);
+    expect(tn.result()).toBe(10);
   });
 
   it("divides integers", () => {
-    const testCase = new TurboNumber(10);
-    testCase.divide(5);
-    expect(testCase.result()).toBe(2);
+    tn.divide(5);
+    expect(tn.result()).toBe(2);
   });
 
   it("subtracts integers", () => {
-    const testCase = new TurboNumber(10);
-    testCase.subtract(5);
-    expect(testCase.result()).toBe(5);
+    tn.subtract(5);
+    expect(tn.result()).toBe(5);
   });
 
   it("doesn't divide by 0", () => {
-    const tn = new TurboNumber(10);
     expect(() => tn.divide(0)).toThrow("You cannot divide by zero");
   });
 
   it("chains operations", () => {
-    expect(new TurboNumber(17).subtract(5).divide(-3).result()).toBe(-4);
+    expect(tn.subtract(5).divide(-3).result()).toBeCloseTo(-1.667);
   });
 
   // it("doesn't operate outside of range", () => {
