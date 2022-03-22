@@ -4,7 +4,7 @@ export class NokiaTexter {
     this.text = text;
   }
   squeeze() {
-    this.text = this.text.trim();
+    this.text = this.text.trim().replace(/  +/g, " ");
     if (!this.text.includes(" ")) return this.text;
     if (this.text.split(" ").join("").length > 160)
       throw new Error("MessageTooLong");

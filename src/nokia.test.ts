@@ -1,7 +1,7 @@
 import { NokiaTexter } from "./nokia";
 
 describe(NokiaTexter.name, () => {
-  it.skip("returns string without spaces as is", () => {
+  it("returns string without spaces as is", () => {
     expect(new NokiaTexter("NieZmieniajNiczego").squeeze()).toBe(
       "NieZmieniajNiczego"
     );
@@ -24,10 +24,21 @@ describe(NokiaTexter.name, () => {
     expect(() => example.squeeze()).toThrowError("MessageTooLong");
   });
 
-  it.only("trims strings (removes whitespace at the end and the beginning)", () => {
+  it("trims strings (removes whitespace at the end and the beginning)", () => {
     expect(new NokiaTexter("  Nie czekaj z kolacja. ").squeeze()).toBe(
       "NIEczekajZkolacja."
     );
   });
 
+  it("handles double spaces", () => {
+    expect(new NokiaTexter("Nie  czekaj z kolacja. ").squeeze()).toBe(
+      "NIEczekajZkolacja."
+    );
+  });
+
+  it("handles triple+ spaces", () => {
+    expect(new NokiaTexter("Nie   czekaj     z kolacja. ").squeeze()).toBe(
+      "NIEczekajZkolacja."
+    );
+  });
 });
