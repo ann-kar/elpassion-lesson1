@@ -1,7 +1,35 @@
-import { number } from "./index";
+import { TurboNumber } from "./index";
 
-describe("number", function () {
-  it("works", () => {
-    expect(number).toBe(5);
+describe("class TurboNumber", function () {
+  it("returns the number provided", () => {
+    expect(new TurboNumber(10).result()).toBe(10);
   });
+
+  it("divides integers", () => {
+    const testCase = new TurboNumber(10);
+    testCase.divide(5);
+    expect(testCase.result()).toBe(2);
+  });
+
+  it("subtracts integers", () => {
+    const testCase = new TurboNumber(10);
+    testCase.subtract(5);
+    expect(testCase.result()).toBe(5);
+  });
+
+  it("doesn't divide by 0", () => {
+    const tn = new TurboNumber(10);
+    tn.divide(0);
+    expect(tn.result()).toThrowError;
+  });
+
+  it("doesn't operate outside of range", () => {
+    const tn = new TurboNumber(Number.MIN_SAFE_INTEGER);
+    tn.subtract(4);
+    expect(() => tn.result()).toThrow("out of range");
+  });
+
+
+
+
 });
