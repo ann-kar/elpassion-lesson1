@@ -33,4 +33,11 @@ describe(TurboNumber.name, () => {
       "Value outside of accepted range (integer overflow)"
     );
   });
+
+  it("doesn't allow to calculate numbers larger than MAX_SAFE_INTEGER", () => {
+    const tn = new TurboNumber(Number.MAX_SAFE_INTEGER - 2);
+    expect(() => tn.subtract(-5)).toThrow(
+      "Value outside of accepted range (integer overflow)"
+    );
+  });
 });
