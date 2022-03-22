@@ -5,12 +5,14 @@ export class TurboNumber {
     }
     subtract(x: number) {
         this.num = this.num - x;
+        return this;
     }
     divide(x: number) {
         if (x === 0) {
             throw new Error("You cannot divide by zero")
         }
         this.num = this.num / x;
+        return this;
     }
     result() {
         return this.num;

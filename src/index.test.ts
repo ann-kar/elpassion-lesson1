@@ -22,6 +22,10 @@ describe("class TurboNumber", function () {
     expect(() => tn.divide(0)).toThrow("You cannot divide by zero");
   });
 
+  it("chains operations", () => {
+    expect(new TurboNumber(17).subtract(5).divide(-3).result()).toBe(-4);
+  });
+
   // it("doesn't operate outside of range", () => {
   //   const tn = new TurboNumber(Number.MIN_SAFE_INTEGER);
   //   -996 -995
