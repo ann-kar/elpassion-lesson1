@@ -22,8 +22,15 @@ describe(TurboNumber.name, () => {
     expect(tn.divide(5).subtract(1).result()).toBe(1);
   });
 
-  it.only("doesn't allow division by zero", () => {
+  it("doesn't allow division by zero", () => {
     const tn = new TurboNumber(10);
     expect(() => tn.divide(0)).toThrow("You cannot divide by zero!");
+  });
+
+  it("doesn't allow to calculate numbers smaller than MIN_SAFE_INTEGER", () => {
+    const tn = new TurboNumber(Number.MIN_SAFE_INTEGER + 2);
+    expect(() => tn.subtract(5)).toThrow(
+      "Value outside of accepted range (integer overflow)"
+    );
   });
 });

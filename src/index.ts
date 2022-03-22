@@ -5,6 +5,9 @@ export class TurboNumber {
   }
 
   subtract(x: number) {
+    if (this.num < Number.MIN_SAFE_INTEGER + x) {
+      throw new Error("Value outside of accepted range (integer overflow)");
+    }
     this.num -= x;
     return this;
   }
