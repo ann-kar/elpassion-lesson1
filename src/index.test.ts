@@ -16,4 +16,9 @@ describe(TurboNumber.name, () => {
     tn.divide(5);
     expect(tn.result()).toBe(2);
   });
+
+  it.only('allows chaining', () => {
+    const tn = new TurboNumber(10);
+    expect(tn.divide(5).subtract(1).result()).toBe(1);
+  });
 });
