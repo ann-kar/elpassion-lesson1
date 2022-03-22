@@ -17,8 +17,13 @@ describe(TurboNumber.name, () => {
     expect(tn.result()).toBe(2);
   });
 
-  it.only('allows chaining', () => {
+  it("allows chaining", () => {
     const tn = new TurboNumber(10);
     expect(tn.divide(5).subtract(1).result()).toBe(1);
+  });
+
+  it.only("doesn't allow division by zero", () => {
+    const tn = new TurboNumber(10);
+    expect(() => tn.divide(0)).toThrow("You cannot divide by zero!");
   });
 });
