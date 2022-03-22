@@ -29,10 +29,11 @@ describe("class TurboNumber", function () {
     expect(tn.subtract(5).divide(-3).result()).toBeCloseTo(-1.667);
   });
 
-  // it("doesn't operate outside of range", () => {
-  //   const tn = new TurboNumber(Number.MIN_SAFE_INTEGER);
-  //   -996 -995
-  //   tn.subtract(4);
-  //   expect(() => tn.result()).toThrow("out of range");
-  // });
+  it("doesn't operate outside of range (with MIN_SAFE_INTEGER)", () => {
+    expect(() => new TurboNumber(Number.MIN_SAFE_INTEGER).subtract(4)).toThrow("Outside of range");
+  });
+
+  it("doesn't operate outside of range (with MAX_SAFE_INTEGER)", () => {
+    expect(() => tn.subtract(Number.MAX_SAFE_INTEGER)).toThrow("Outside of range");
+  });
 });
